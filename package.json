@@ -1,0 +1,22 @@
+{
+  "name": "noxi",
+  "description": "Small virtual pet set in the world of 'The Origin.' Noxi: the myth in reality.",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "eslint . && vite",
+    "build": "eslint .  tsc && vite build",
+    "preview": "eslint .  && vite preview"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.1",
+    "eslint": "^9.39.1",
+    "typescript": "~5.9.3",
+    "typescript-eslint": "^8.48.1",
+    "vite": "^7.2.4"
+  },
+  "dependencies": {
+    "phaser": "^3.90.0"
+  }
+}
