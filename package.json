@@ -7,7 +7,8 @@
   "scripts": {
     "dev": "eslint . && vite",
     "build": "eslint .  tsc && vite build",
-    "preview": "eslint .  && vite preview"
+    "preview": "eslint .  && vite preview",
+    "lint": "eslint ."
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",

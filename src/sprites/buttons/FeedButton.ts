@@ -1,10 +1,9 @@
 import Phaser from "phaser";
 import { normalize } from "../../utilities/normalizing";
-import type { MainScene } from "../../scenes/MainScene";
+import type { GameManagerScene } from "../../scenes/GameManager";
 
 export class FeedButton extends Phaser.GameObjects.Image {
-
-  constructor(scene:MainScene, x:number, y:number) {
+  constructor(scene:Phaser.Scene, x:number, y:number) {
     super(scene, x, y, "feed-button");
     scene.add.existing(this);
 
@@ -13,9 +12,11 @@ export class FeedButton extends Phaser.GameObjects.Image {
     this.scale = normalize(this.scale);
 
     this.on("pointerdown", () => {
-      console.log("Eat!");
+      const manager = scene.scene.get("game-manager-scene") as GameManagerScene;
+      const pet = manager.getPet();
+      
+      pet.setHealth(pet.getHealth() + 1);
+      console.log(pet.getHealth());
     });
-
-
   }
 }
