@@ -1,22 +1,13 @@
 import Phaser from "phaser";
-import { normalize } from "../../utilities/normalizing";
-import type { GameManagerScene } from "../../scenes/GameManager";
+import { Button } from "./Button";
 
-export class FeedButton extends Phaser.GameObjects.Image {
+export class FeedButton extends Button {
   constructor(scene:Phaser.Scene, x:number, y:number) {
     super(scene, x, y, "feed-button");
-    scene.add.existing(this);
+  }
 
-    this.setInteractive({useHandCursor: true});
-    
-    this.scale = normalize(this.scale);
-
-    this.on("pointerdown", () => {
-      const manager = scene.scene.get("game-manager-scene") as GameManagerScene;
-      const pet = manager.getPet();
-      
-      pet.setHealth(pet.getHealth() + 1);
-      console.log(pet.getHealth());
-    });
+  //emitEvent: emits the "feed-pet" in the event
+  public override emitEvent(): void {
+    this.scene.events.emit("feed-pet");
   }
 }

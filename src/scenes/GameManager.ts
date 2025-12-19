@@ -1,28 +1,25 @@
 import Phaser from "phaser";
-import { FeedButton } from "../sprites/buttons/FeedButton";
-import { Pet } from "../sprites/entities/Pet";
-import { normalize } from "../utilities/normalizing";
+import type { PetState } from "../states/PetState";
 
+//GameManagerScene: Scene that manages states and change
 export class GameManagerScene extends Phaser.Scene {
-  private pet!: Pet;
-  private feedButton!: FeedButton;
+  //Add PetState that stores current state of the pet
+  private _petState : PetState = {
+    health: 100,
+    age: 0,
+  };
 
   constructor(){
     super({key: "game-manager-scene"});
   }
 
-  create(){
-    this.pet = new Pet(this,0,0);
-    this.pet.scale = normalize(this.pet.scale) / 2;
-
-    this.feedButton = new FeedButton(this,0,0);
+  //get the state
+  get petState(): PetState {
+    return this._petState;
   }
 
-  public getPet(): Pet {
-    return this.pet;
-  }
-
-  public getFeedButton(): FeedButton {
-    return this.feedButton;
+  //set the state (PROBABLY GOING TO DELETE THIS IF ITS NOT NECESSARY)
+  set petState(ps: PetState) {
+    this.petState = ps;
   }
 }
