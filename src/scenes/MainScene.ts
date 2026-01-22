@@ -58,6 +58,14 @@ export class MainScene extends Phaser.Scene {
     this.events.on("interact-toggle", () => {
       console.log("clicked interaction page");
     });
+
+    this.events.on("play", () => {
+      console.log("playing...");
+    });
+
+    this.events.on("scold", () => {
+      console.log("scolding");
+    });
   }
 
   //get pet
