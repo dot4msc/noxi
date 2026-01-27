@@ -24,6 +24,21 @@ export class Pet extends Phaser.GameObjects.Sprite {
   get petState(): PetState {
     return this._petState;
   }
-  
+
+  public eat(): void {
+    this._petState.health++;
+  }
+
+  public plays(): void {
+    console.log("Playing");
+  }
+
+  public discipline(): void {
+    console.log("I'm being disciplined");
+  }
+
+  public eatTreat(): void {
+    console.log("eating treat");
+  }
 
 }

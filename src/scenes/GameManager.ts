@@ -4,11 +4,8 @@ import type { PetState } from "../states/PetState";
 //GameManagerScene: Scene that manages states and change
 export class GameManagerScene extends Phaser.Scene {
   //Add PetState that stores current state of the pet
-  private _petState : PetState = {
-    health: 100,
-    age: 0,
-  };
-
+  private _petState! : PetState
+;
   constructor(){
     super({key: "game-manager-scene"});
   }

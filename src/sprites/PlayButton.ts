@@ -1,5 +1,5 @@
 import Phaser from "phaser";
-import { Button } from "./Button";
+import { Button } from "../UI/Button";
 
 export class PlayButton extends Button {
   constructor(scene: Phaser.Scene, x: number, y: number) {
