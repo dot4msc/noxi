@@ -1,12 +1,11 @@
-import type { Pet } from "../sprites/entities/Pet";
+import Phaser from "phaser";
 import { Command } from "./Command";
 
 export class FeedCommand extends Command {
-  constructor(pet: Pet) {
-    super(pet);
-
+  constructor(scene: Phaser.Scene) {
+    super(scene);
   }
   public execute(): void {
-    this.pet.eat();
+    this.scene.events.emit("feed");
   }
 }

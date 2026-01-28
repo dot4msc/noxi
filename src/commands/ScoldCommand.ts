@@ -1,11 +1,10 @@
+import Phaser from "phaser";
 import { Command } from "./Command";
-import { Pet } from "../sprites/entities/Pet";
 export class ScoldCommand extends Command {
-  constructor(pet: Pet) {
-    super(pet);
+  constructor(scene: Phaser.Scene) {
+    super(scene);
   }
-  
   execute(): void {
-    this.pet.discipline();
+    this.scene.events.emit("scold");
   }
 }

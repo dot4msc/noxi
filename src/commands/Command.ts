@@ -1,16 +1,14 @@
-import type { Pet } from "../sprites/entities/Pet";
+import Phaser, { Scene } from "phaser";
 
 export abstract class Command {
-  protected _pet: Pet;
-  constructor(pet: Pet) {
-    this._pet = pet;
-  }
-  get pet(): Pet {
-    return this._pet;
-  }
-  set pet(p: Pet) {
-    this._pet = p;
+  protected _scene: Scene;
+  constructor(scene: Phaser.Scene) {
+    this._scene = scene;
   }
 
+  get scene(): Phaser.Scene {
+    return this._scene;
+  }
+  
   abstract execute(): void;
 }

@@ -10,7 +10,7 @@ export class BootScene extends Phaser.Scene {
     //loading images
     this.load.image("noxi_larva", "placeholders/noxi-larva.png");
     this.load.image("feed-button", "placeholders/feed-button.png");
-    this.load.image("interact-button", "placeholders/interact-tab.png");
+    this.load.image("scold-button", "placeholders/scold-button.png");
   }
 
   create(){

@@ -3,7 +3,7 @@ import { normalize } from "../utilities/normalizing";
 import type { Command } from "../commands/Command";
 
 //Button: abstract class that all interactive buttons inherit
-export abstract class Button extends Phaser.GameObjects.Image {
+export class Button extends Phaser.GameObjects.Image {
   //Basic constructor that prepares the button for rendering
   private _command: Command;
   constructor(scene: Phaser.Scene, x: number, y: number, texture: string, command: Command){
