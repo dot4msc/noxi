@@ -8,6 +8,7 @@ export class GameManagerScene extends Phaser.Scene {
 ;
   constructor(){
     super({key: "game-manager-scene"});
+    this.petState = {age: 0, health: 100};
   }
 
   //get the state
@@ -17,6 +18,6 @@ export class GameManagerScene extends Phaser.Scene {
 
   //set the state (PROBABLY GOING TO DELETE THIS IF ITS NOT NECESSARY)
   set petState(ps: PetState) {
-    this.petState = ps;
+    this._petState = ps;
   }
 }

@@ -24,9 +24,12 @@ export class MainScene extends Phaser.Scene {
     this.pet.x = this.game.config.width as number / 2;
     this.pet.y = this.game.config.height as number / 2;
 
-    
+    this.scene.scene.events.on("feed", () => {
+      this.pet.eat();
+    });
 
-    
-
+    this.scene.scene.events.on("scold", () => {
+      this.pet.discipline();
+    });
   }
 }
