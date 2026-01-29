@@ -11,6 +11,7 @@ export class BootScene extends Phaser.Scene {
     this.load.image("noxi_larva", "placeholders/noxi-larva.png");
     this.load.image("feed-button", "placeholders/feed-button.png");
     this.load.image("scold-button", "placeholders/scold-button.png");
+    this.load.spritesheet("health", "placeholders/health.png", {frameWidth: 13, frameHeight: 11});
   }
 
   create(){

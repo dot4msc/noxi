@@ -11,7 +11,7 @@ const config: Phaser.Types.Core.GameConfig = {
   height: normalize(144),
   parent: "main",
   backgroundColor: "#9bbc0f",
-  scene: [BootScene, GameManagerScene, MainScene, UIView],
+  scene: [BootScene, MainScene, UIView],
   pixelArt: true,
 };
 

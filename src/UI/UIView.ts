@@ -2,10 +2,12 @@ import Phaser from "phaser";
 import { Button } from "./Button";
 import { FeedCommand } from "../commands/FeedCommand";
 import { ScoldCommand } from "../commands/ScoldCommand";
+import { HeartBar } from "./HeartBar";
 
 export class UIView extends Phaser.Scene {
   private scoldButton!: Button;
   private feedButton!: Button;
+  private heartBar!: HeartBar;
 
   constructor() {
     super({key: "ui-view"});
@@ -14,16 +16,22 @@ export class UIView extends Phaser.Scene {
   create() {
     this.scoldButton = new Button(this, 0, 0, "scold-button", new ScoldCommand(this.game.scene.getScene("main-scene")));
     this.feedButton = new Button(this, 0, 0, "feed-button", new FeedCommand(this.game.scene.getScene("main-scene")));
+    this.heartBar = new HeartBar(this, 0, 0);
     
     this.scoldButton.setOrigin(1,0);
-
+    
     this.scoldButton.setX(this.game.config.width as number-8);
     this.scoldButton.setY(this.game.config.height as number * (3 / 4));
-
+    
     this.feedButton.setOrigin(0,0);
-
+    
     this.feedButton.setX(8);
     this.feedButton.setY(this.game.config.height as number * (3 / 4));
+    
+    this.heartBar.setX(32);
+    this.heartBar.setY(this.game.config.height as number * (1 / 8));
+    
+    this.heartBar.setHealth(0);
   }
 
 
