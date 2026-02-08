@@ -1,8 +1,7 @@
 import Phaser from "phaser";
-import { normalize } from "./utilities/normalizing";
+import { normalize } from "./utilities/utilities";
 import { BootScene } from "./scenes/BootScene";
 import { MainScene } from "./scenes/MainScene";
-import { GameManagerScene } from "./scenes/GameManager";
 import { UIView } from "./UI/UIView";
 
 const config: Phaser.Types.Core.GameConfig = {

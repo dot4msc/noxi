@@ -1,5 +1,5 @@
 import Phaser from "phaser";
-import { normalize } from "../utilities/normalizing";
+import { normalize } from "../utilities/utilities";
 
 const HeartAmount = {
   FULL: 0,

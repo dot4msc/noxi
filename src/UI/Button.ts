@@ -1,5 +1,5 @@
 import Phaser from "phaser";
-import { normalize } from "../utilities/normalizing";
+import { normalize } from "../utilities/utilities";
 import type { Command } from "../commands/Command";
 
 //Button: abstract class that all interactive buttons inherit
