@@ -8,7 +8,9 @@ export abstract class PetState {
     this.pet = pet;
   }
 
-  abstract happy(): void;
-  abstract bored(): void;
-  abstract hungry(): void;
+  abstract onTick(): void;
+  abstract onFeed(): void;
+  abstract onPlay(): void;
+  abstract onSleep(): void;
+  abstract onScold(): void;
 }

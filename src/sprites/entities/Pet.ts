@@ -8,9 +8,13 @@ export class Pet extends Phaser.GameObjects.Sprite {
   private _petState: PetState;
   private _age: number = 0;
   private _health: number = 6;
-  private _hunger: number = 10;
-  private _happiness: number = 10;
-  private _hungerTimer: number = 0;
+  private _hunger: number = 0;
+  private _happiness: number = 20;
+  private _discipline: number = 0;
+  private hungerTimer: number = 0;
+  private hungerTicker: number = 0;
+  private happinessTimer: number = 0;
+  private happinessTicker: number = 0;
   
   constructor(scene: Phaser.Scene, x: number, y: number, petState: PetState) {
     
@@ -18,27 +22,72 @@ export class Pet extends Phaser.GameObjects.Sprite {
     this.scene.add.existing(this);
     this.scale = normalize(this.scale);
     this._petState = petState;
+
+    console.log(this.hungerTimer);
+
+    this.rollNextHungerTick();
+    this.rollNextHappinessTick();
+  }
+
+  preUpdate(_time: number, delta: number){
+    this.hungerTimer += delta;
+
+
+    if(this.hungerTimer >= this.hungerTicker) {
+
+      this.hunger++;
+      this.hungerTimer = 0;
+      this.rollNextHungerTick();
+    }
+
+    if(this.happinessTimer >= this.happinessTicker) {
+
+      this.happiness--;
+      this.happinessTimer = 0;
+      this.rollNextHungerTick();
+    }
+  }
+
+  private rollNextHungerTick() {
+    this.hungerTicker = Phaser.Math.Between(100000, 180000);
+    console.log(this.hungerTicker);
+  }
+
+  private rollNextHappinessTick() {
+    this.happinessTicker = Phaser.Math.Between(390000, 480000);
+  }
+
+  public changeState(state: PetState) {
+    this.petState = state;
   }
   
-  
-  
-  public eat(): void {
-    console.log("eat");
+  public onPlay(): void {
+    this.petState.onPlay();
   }
   
-  public plays(): void {
-    console.log("Playing");
+  public onScold(): void {
+    this.petState.onScold();
   }
   
-  public discipline(): void {
-    console.log("I'm being disciplined");
+  public onFeed(): void {
+    this.petState.onFeed();
   }
-  
-  public eatTreat(): void {
-    console.log("eating treat");
+
+  public onSleep(): void {
+    this.petState.onFeed();
   }
+
+
   
   //GETTERS AND SETTERS
+  get petState(): PetState {
+    return this._petState;
+  }
+  
+  private set petState(ps: PetState) {
+    this._petState = ps;
+  }
+
   get age(): number {
     return this._age;
   }
@@ -70,21 +119,13 @@ export class Pet extends Phaser.GameObjects.Sprite {
   set happiness(happiness: number) {
     this._happiness = happiness;
   }
-  
-  get petState(): PetState {
-    return this._petState;
-  }
-  
-  set petState(ps: PetState) {
-    this._petState = ps;
+
+  get discipline(): number {
+    return this._discipline;
   }
 
-  get hungerTimer(): number {
-    return this._hungerTimer;
-  }
-  set hungerTimer(ht: number) {
-    this._hungerTimer = ht;
+  set discipline(d: number) {
+    this._discipline = d;
   }
 
-  
 }

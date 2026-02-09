@@ -16,7 +16,6 @@ export class BootScene extends Phaser.Scene {
 
   create(){
     //Launching GameManagerScene and Starting MainScene
-    this.scene.launch("game-manager-scene");
     this.scene.launch("ui-view");
     this.scene.start("main-scene");
   }
