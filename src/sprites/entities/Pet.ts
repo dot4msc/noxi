@@ -10,7 +10,8 @@ export class Pet extends Phaser.GameObjects.Sprite {
   private _health: number = 6;
   private _hunger: number = 0;
   private _happiness: number = 20;
-  private _discipline: number = 0;
+  private _discipline: number = 20;
+  private _energy: number = 20;
   private hungerTimer: number = 0;
   private hungerTicker: number = 0;
   private happinessTimer: number = 0;
@@ -32,7 +33,6 @@ export class Pet extends Phaser.GameObjects.Sprite {
   preUpdate(_time: number, delta: number){
     this.hungerTimer += delta;
 
-
     if(this.hungerTimer >= this.hungerTicker) {
 
       this.hunger++;
@@ -46,6 +46,8 @@ export class Pet extends Phaser.GameObjects.Sprite {
       this.happinessTimer = 0;
       this.rollNextHungerTick();
     }
+
+    this.onTick(delta);
   }
 
   private rollNextHungerTick() {
@@ -59,6 +61,10 @@ export class Pet extends Phaser.GameObjects.Sprite {
 
   public changeState(state: PetState) {
     this.petState = state;
+  }
+
+  public onTick(delta: number): void {
+    this.petState.onTick(delta);
   }
   
   public onPlay(): void {
@@ -74,7 +80,7 @@ export class Pet extends Phaser.GameObjects.Sprite {
   }
 
   public onSleep(): void {
-    this.petState.onFeed();
+    this.petState.onSleep();
   }
 
 
@@ -126,6 +132,14 @@ export class Pet extends Phaser.GameObjects.Sprite {
 
   set discipline(d: number) {
     this._discipline = d;
+  }
+
+  get energy(): number {
+    return this._energy;
+  }
+
+  set energy(e: number) {
+    this._energy = e;
   }
 
 }

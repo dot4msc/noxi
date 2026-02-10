@@ -1,31 +1,30 @@
 import type { Pet } from "../sprites/entities/Pet";
 import { PetState } from "./PetState";
 
-export class HungryState extends PetState {
+export class SleepingState extends PetState {
   
   constructor(pet: Pet) {
     super(pet);
   }
-  
-  onTick(delta: number) {
-    this.pet.hungry
-  }
 
-  onFeed() {
+  onTick(): void {
     throw new Error("Method not implemented.");
   }
 
-  onPlay() {
+  onFeed(): void {
     throw new Error("Method not implemented.");
   }
 
-  onSleep() {
+  onPlay(): void {
     throw new Error("Method not implemented.");
   }
 
-  onScold() {
+  onSleep(): void {
     throw new Error("Method not implemented.");
   }
-  
-  
+
+  onScold(): void {
+    throw new Error("Method not implemented.");
+  }
+
 }

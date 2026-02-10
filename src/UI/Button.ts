@@ -13,9 +13,8 @@ export class Button extends Phaser.GameObjects.Image {
 
     this._command = command;
     this.setInteractive({useHandCursor: true});
-    
-    this.scale = normalize(this.scale);
 
+    this.scale = normalize(this.scale);
     //run command on every button click
     this.on("pointerdown", () => {
       this.command.execute();

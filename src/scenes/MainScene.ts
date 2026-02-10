@@ -24,7 +24,18 @@ export class MainScene extends Phaser.Scene {
     this.scene.scene.events.on("feed", () => {
       this.pet.onFeed();
     });
-    
+
+    this.scene.scene.events.on("play", () => {
+      this.pet.onPlay();
+    });
+
+    this.scene.scene.events.on("scold", () => {
+      this.pet.onScold();
+    });
+
+    this.scene.scene.events.on("sleep", () => {
+      this.pet.onSleep();
+    });
 
   }
 }

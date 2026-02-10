@@ -1,4 +1,5 @@
 import type { Pet } from "../sprites/entities/Pet";
+import { HappyState } from "./HappyState";
 import { PetState } from "./PetState";
 
 export class BoredState extends PetState {
@@ -8,22 +9,27 @@ export class BoredState extends PetState {
   }
 
   onTick() {
-    throw new Error("Method not implemented.");
+    this.pet.discipline--;
+    this.pet.happiness -= 2;
   }
 
   onFeed() {
-    throw new Error("Method not implemented.");
+    console.log("TOO BORED TO EAT");
   }
 
   onPlay() {
-    throw new Error("Method not implemented.");
+    //play mini game
+    this.pet.happiness += 2;
+    if(this.pet.happiness >= 15) {
+      this.pet.changeState(new HappyState(this.pet));
+    }
   }
 
   onSleep() {
-    throw new Error("Method not implemented.");
+    console.log("TOO BORED TO SLEEP");
   }
 
   onScold() {
-    throw new Error("Method not implemented.");
+    this.pet.happiness -= 4;
   }
 }

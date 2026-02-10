@@ -8,7 +8,7 @@ export abstract class PetState {
     this.pet = pet;
   }
 
-  abstract onTick(): void;
+  abstract onTick(delta?: number): void;
   abstract onFeed(): void;
   abstract onPlay(): void;
   abstract onSleep(): void;
