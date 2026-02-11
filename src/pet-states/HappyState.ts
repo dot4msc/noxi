@@ -8,16 +8,24 @@ export class HappyState extends PetState {
     super(pet);
   }
 
-  onTick() {
+  onTick(delta: number) {
     //do nothing
+    this.timer += delta;
+
+    if(this.timer >= this.ticker){
+      this.pet.happiness--;
+      this.pet.satiety--;
+      this.timer = 0;
+      this.rollNextTick();
+    }
   }
 
   onFeed() {
-    if(this.pet.hunger == 0) {
+    if(this.pet.satiety == 0) {
       console.log("PET IS FULL");
     }
     else {
-      this.pet.hunger--;
+      this.pet.satiety--;
     }
   }
 
@@ -43,6 +51,10 @@ export class HappyState extends PetState {
       this.pet.discipline -= 1;
       this.pet.happiness -= 2;
     }
+  }
+
+  rollNextTick(): void {
+    this.ticker = Phaser.Math.Between(150000, 200000);
   }
   
 

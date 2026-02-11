@@ -7,8 +7,16 @@ export class HungryState extends PetState {
     super(pet);
   }
   
+  //
   onTick(delta: number) {
-    this.pet.hungry
+    this.timer += delta; //entonces aqui el temporizador interno aumenta cada milisegundo
+
+    if(this.timer >= this.ticker) {
+      this.pet.satiety -= 2;
+      this.pet.happiness--;
+      this.timer = 0; 
+      this.rollNextTick();
+    }
   }
 
   onFeed() {
@@ -27,5 +35,7 @@ export class HungryState extends PetState {
     throw new Error("Method not implemented.");
   }
   
-  
+  rollNextTick(): void {
+    this.ticker = Phaser.Math.Between(100000, 180000); //Este es el limite al que puede llegar el temporizador para que haga "tick" de que estoy sintiendo hambre! Ah bueno pues
+  }
 }

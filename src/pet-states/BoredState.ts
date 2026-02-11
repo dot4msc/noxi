@@ -8,9 +8,14 @@ export class BoredState extends PetState {
     super(pet);
   }
 
-  onTick() {
-    this.pet.discipline--;
-    this.pet.happiness -= 2;
+  onTick(delta: number) {
+    this.timer += delta;
+
+    if(this.timer >= this.ticker) {
+      this.pet.happiness -= 2;
+      this.pet.satiety -= 2;
+      this.rollNextTick();
+    }
   }
 
   onFeed() {
@@ -22,6 +27,7 @@ export class BoredState extends PetState {
     this.pet.happiness += 2;
     if(this.pet.happiness >= 15) {
       this.pet.changeState(new HappyState(this.pet));
+      //play happy animation
     }
   }
 
@@ -31,5 +37,9 @@ export class BoredState extends PetState {
 
   onScold() {
     this.pet.happiness -= 4;
+  }
+
+  rollNextTick(): void {
+    this.ticker = Phaser.Math.Between(80000, 120000);
   }
 }
